@@ -18,23 +18,25 @@ TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 TARGET_BOOT_ANIMATION_RES := 720
 
+# Inherit some common LineageOS stuff.
+$(call inherit-product, vendor/potato/config/common_full_phone.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n.mk)
-
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/aosip/config/common_full_phone.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
 
 # Inherit from santoni device
 $(call inherit-product, device/xiaomi/santoni/device.mk)
 
+PRODUCT_DEVICE := santoni
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi 4X
-PRODUCT_DEVICE := santoni
+PRODUCT_NAME := potato_santoni
 BOARD_VENDOR := Xiaomi
-PRODUCT_NAME := aosip_santoni
+PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
